@@ -1,0 +1,26 @@
+CREATE TABLE users(
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    username VARCHAR(100) NOT NULL UNIQUE,
+    password VARCHAR(100) NOT NULL,
+    role ENUM('user', 'admin') DEFAULT 'user'
+);
+
+CREATE TABLE posts (
+     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+     user_id INT NOT NULL,
+     title VARCHAR(255) NOT NULL,
+     description TEXT NOT NULL,
+     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+     FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+CREATE TABLE comments (
+     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+     user_id INT NOT NULL,
+     post_id INT NOT NULL,
+     comment TEXT NOT NULL,
+     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+     FOREIGN KEY (user_id) REFERENCES users(id),
+     FOREIGN KEY (post_id) REFERENCES posts(id) 
+);
