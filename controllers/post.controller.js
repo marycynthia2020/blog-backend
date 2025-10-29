@@ -71,7 +71,12 @@ async function getAllPosts(req, res) {
     });
   } catch (error) {
     console.log(error.stack);
-  }
+    return res.status(200).json({
+      status: false,
+      message: "Failed to fetch posts",
+  })
+
+}
 }
 
 async function getPostById(req, res) {
