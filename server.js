@@ -8,6 +8,10 @@ const app = express();
 const PORT = process.env.PORT | 3000;
 app.use(express.json());
 
+app.get("/", (req, res)=>{
+  res.send("Server is up and running")
+})
+
 app.use("/auth", authRoute);
 app.use("/posts", postRoute);
 
