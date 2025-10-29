@@ -11,8 +11,6 @@ router.get('/:id/comments', getPostComments)
 router.get('/',  getAllPosts)
 router.delete('/:id', authmiddleWare, deletePost)
 
-// router.post('/:id/comment', authmiddleWare, postComment)
-
 
 
 module.exports = router
